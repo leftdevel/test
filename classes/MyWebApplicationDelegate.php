@@ -57,10 +57,10 @@ class AppUser_LoginDelegate
 
     private function rerouteForLandingPage()
     {
-        if (strpos($invocationPath, '/') === false and preg_match('/^[A-z][A-z-_0-9]*$/', $invocationPath) and LandingPagePeer::retrieveBySlug($invocationPath)) {
+        if (strpos($this->invocationPath, '/') === false and preg_match('/^[A-z][A-z-_0-9]*$/', $this->invocationPath) and LandingPagePeer::retrieveBySlug($this->invocationPath)) {
             // the skin system will only show the tourbuzzBranded skin if the REQUEST_URI matches a known "tourbuzz" branded page
-            $_SERVER['REQUEST_URI'] = "/public/pages/landing/{$invocationPath}";
-            return "public/pages/landing/{$invocationPath}";
+            $_SERVER['REQUEST_URI'] = "/public/pages/landing/{$this->invocationPath}";
+            return "public/pages/landing/{$this->invocationPath}";
         }
 
         return NULL;
